@@ -11,5 +11,5 @@ Default name            ${EMPTY}               Character
 Create character
     [Arguments]    ${characterNameInput}    ${characterNameOutput}
     Provide character name      ${characterNameInput}
-    Create the character
+    Create the character    
     Character name is           ${characterNameOutput}
