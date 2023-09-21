@@ -11,10 +11,27 @@ class Character:
     def Character(character: str):
         self.name=character
 
-    def move(self, direction: Direction) -> None:
-        # TODO: Implement move - should call something on another class
-        # TODO: Should probably also update the game results
-        pass
+    def move(self, direction):
+        if not self.game_map:
+            print(f"{self.name} is not on any map!")
+            return
+
+        # Define movement directions
+        movements = {
+            'up': (-1, 0),
+            'down': (1, 0),
+            'left': (0, -1),
+            'right': (0, 1),
+        }
+        
+        dx, dy = movements.get(direction, (0, 0))
+        new_position = (self.position[0] + dx, self.position[1] + dy)
+        
+        if self.game_map.isPositionValid(new_position):
+            self.position = new_position
+            print(f"{self.name} has moved {direction} to position {new_position}!")
+        else:
+            print(f"{self.name} can't move {direction}!")
 
     def enterMap(self, game_map, position=(0, 0)):
         if game_map.isPositionValid(position):
